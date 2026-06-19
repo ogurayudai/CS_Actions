@@ -11,7 +11,7 @@ on:
     branches:
       - main
 
-...
+
 # 実行するジョブ（作業のまとまり）の定義
 jobs:
   deploy: # ジョブの識別名（任意の名前）
@@ -40,7 +40,7 @@ jobs:
             echo "--- Current User ---"
             whoami   # 実行ユーザーを出力し、指定したユーザーでログインできたか確認
 
-      - name: ASP.NET Core Runtime 8.0 のプロビジョニング
+      - name: ASP.NET Core Runtime 10.0 のプロビジョニング
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.ACTIONS_AZURE_HOST }}
@@ -51,8 +51,8 @@ jobs:
             echo "--- Updating Package List ---"
             sudo apt-get update
             # 2. ASP.NET Core ランタイムのインストール
-            echo "--- Installing ASP.NET Core Runtime 8.0 ---"
-            sudo apt-get install -y aspnetcore-runtime-8.0
+            echo "--- Installing ASP.NET Core Runtime 10.0 ---"
+            sudo apt-get install -y aspnetcore-runtime-10.0
             # 3. インストール結果の確認
             echo "--- Verifying Installation ---"
             dotnet --list-runtimes
